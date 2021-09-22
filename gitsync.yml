@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+    - name: Apache Installation
+      yum:
+       name: httpd
+       state: present
+    - name: Creation of Index.html
+      copy:
+         content: "Welcome to my web page"
+         dest: /var/www/html/index.html
+    - name: HTTP service
+      service:
+         name: httpd
+         state: started
+         enabled: true
+
